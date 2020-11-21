@@ -10,8 +10,8 @@
     crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-  <nav class="navbar navbar-expand-md navbar-light py-4 fixed-top">
+<body id="home" data-spy="scroll" data-target="main-nav">
+  <nav class="navbar navbar-expand-md navbar-light py-4 fixed-top" id="main-nav">
     <div class="container">
       <a href="#home" class="navbar-brand">
         <img src="img/mlogo.png" width="50" height="50" alt="Logo">
@@ -263,6 +263,60 @@
     </div>
   </section>
 
+  <!-- CONTACT -->
+  <section id="contact" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3>Get In Touch</h3>
+          <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur officia</p>
+          <form>
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-user"></i>
+                </span>
+              </div>
+              <input class="form-control" placeholder="Name">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-envelope" aria-hidden="true"></i>
+                </span>
+              </div>
+              <input class="form-control" placeholder="Email">
+            </div>
+
+            <div class="input-group input-group-lg mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <i class="fas fa-pencil-alt"></i>
+                </span>
+              </div>
+              <textarea class="form-control" placeholder="Message" rows="5"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="col-lg-3 align-self-center">
+          <img class="img-fluid" src="img/mlogo.png" alt="Logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="main-footer" class="py-5 bg-primary text-white">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-6 ml-auto">
+          <p class="lead">Copyright &copy; <span id="year"></span></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
 
 
@@ -271,5 +325,28 @@
   <script src="js/jquery.js"></script>
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.min.js"></script>
+
+  <script>
+    $('#year').text(new Date().getFullYear());
+
+    // init scrollspy
+    $('body').scrollspy({target: '#main-nav'});
+
+    // smooth scrolling
+    $('#main-nav a').on('click', function(e) {
+      if(this.hash !== "") {
+        e.preventDefault();
+        const hash = this.hash;
+
+        $('html,body').animate({
+          scrollTop: $(hash).offset().top
+        }, 800, function () {
+          window.location.hash = hash;
+        })
+      }
+    })
+  </script>
+
+
 </body>
 </html>
